@@ -445,3 +445,177 @@ features:
       - "Hosted admin concerns should not drive desktop-first MyBox V1."
     tests_needed:
       - "Hosted admin tests only if hosted mode becomes in-scope"
+  - id: F-HARNESS-REGISTRY-001
+    feature_name: MyBox harness registry
+    screen_or_surface: Harness registry and settings
+    current_user_behavior: "Harness/provider choices are still mostly inherited from Agentrove provider/model surfaces rather than a MyBox product registry."
+    agentrove_status: change
+    mybox_v1_priority: v1_required
+    owning_frontend:
+      routes:
+        - frontend/src/pages/SettingsPage.tsx
+      components:
+        - frontend/src/components/chat/model-selector/ModelSelector.tsx
+        - frontend/src/components/chat/message-input/InputControls.tsx
+      hooks: []
+      stores: []
+    owning_backend:
+      endpoints:
+        - backend/app/api/endpoints/ai_model.py
+      services:
+        - backend/app/services/acp/adapters.py
+      adapters:
+        - backend/app/services/acp/adapters.py
+      models: []
+    mutation_surfaces:
+      filesystem: false
+      git: false
+      terminal: false
+      external_network: false
+      permissions: true
+    risks:
+      - "Presentation components can drift into hardcoded Codex/OpenClaw/Claude Code/OpenCode arrays if the registry contract is not created first."
+    tests_needed:
+      - "Harness registry schema tests"
+      - "No hardcoded harness list presentation check"
+      - "Truth-label derivation tests"
+  - id: F-HARNESS-SWITCHER-001
+    feature_name: Global harness switcher and chat filter
+    screen_or_surface: Landing chat header sidebar filter
+    current_user_behavior: "Agentrove model/provider selection is available, but MyBox does not yet have a global harness filter that controls visible chats and composer default harness."
+    agentrove_status: change
+    mybox_v1_priority: v1_required
+    owning_frontend:
+      routes:
+        - frontend/src/pages/LandingPage.tsx
+        - frontend/src/pages/ChatPage.tsx
+      components:
+        - frontend/src/components/chat/model-selector/ModelSelector.tsx
+        - frontend/src/components/layout/Sidebar.tsx
+      hooks: []
+      stores:
+        - frontend/src/store/uiStore.ts
+    owning_backend:
+      endpoints: []
+      services: []
+      adapters: []
+      models: []
+    mutation_surfaces:
+      filesystem: false
+      git: false
+      terminal: false
+      external_network: false
+      permissions: false
+    risks:
+      - "A visually foreign switcher would violate the Agentrove/MyBox visual contract."
+      - "Filtering chats by harness must not hide unavailable or read-only truth labels."
+    tests_needed:
+      - "Switcher component rendering tests with registry fixtures"
+      - "Sidebar filter smoke"
+      - "Visual baseline comparison"
+  - id: F-OPENCLAW-VIRTUAL-WORKSPACE-001
+    feature_name: OpenClaw virtual workspace bucket
+    screen_or_surface: Sidebar workspace grouping
+    current_user_behavior: "OpenClaw is not yet integrated; projectless OpenClaw chats have no truthful local workspace mapping."
+    agentrove_status: change
+    mybox_v1_priority: v1_required
+    owning_frontend:
+      routes:
+        - frontend/src/pages/ChatPage.tsx
+      components:
+        - frontend/src/components/layout/Sidebar.tsx
+        - frontend/src/components/layout/SidebarChatItem.tsx
+      hooks: []
+      stores: []
+    owning_backend:
+      endpoints: []
+      services: []
+      adapters: []
+      models: []
+    mutation_surfaces:
+      filesystem: false
+      git: false
+      terminal: false
+      external_network: false
+      permissions: false
+    risks:
+      - "MyBox must not invent local workspace metadata for OpenClaw chats."
+      - "OpenClaw V1 must stay read-only and visibly labeled."
+    tests_needed:
+      - "Virtual workspace grouping fixture"
+      - "OpenClaw read-only label assertion"
+      - "Negative tests proving no OpenClaw mutation controls render in V1"
+  - id: F-RIGHT-INSPECTOR-001
+    feature_name: Review Inspector Browser right panel modes
+    screen_or_surface: Chat right panel
+    current_user_behavior: "Agentrove has review/diff and editor/terminal surfaces, but MyBox has not yet unified selected-event inspection or optional browser preview as right-panel modes."
+    agentrove_status: change
+    mybox_v1_priority: v1_required
+    owning_frontend:
+      routes:
+        - frontend/src/pages/ChatPage.tsx
+      components:
+        - frontend/src/components/sandbox/git/PRReviewView.tsx
+        - frontend/src/components/sandbox/git/DiffView.tsx
+        - frontend/src/components/editor/file-preview/FilePreview.tsx
+      hooks: []
+      stores:
+        - frontend/src/store/uiStore.ts
+    owning_backend:
+      endpoints:
+        - backend/app/api/endpoints/sandbox.py
+      services:
+        - backend/app/services/git.py
+        - backend/app/services/sandbox.py
+      adapters: []
+      models: []
+    mutation_surfaces:
+      filesystem: true
+      git: true
+      terminal: false
+      external_network: false
+      permissions: true
+    risks:
+      - "Raw event details should stay inspectable without flooding the main chat timeline."
+      - "Browser preview must be optional and not a permanent dashboard panel."
+    tests_needed:
+      - "Right panel mode rendering tests"
+      - "Selected item updates inspector fixture"
+      - "Browser preview unavailable/empty state test"
+  - id: F-TURN-SUMMARY-001
+    feature_name: Completed turn work summary
+    screen_or_surface: Chat timeline
+    current_user_behavior: "Agentrove renders provider stream events and tool cards, but MyBox has not yet decided whether to change completed-turn collapse behavior."
+    agentrove_status: change
+    mybox_v1_priority: v1_required
+    owning_frontend:
+      routes:
+        - frontend/src/pages/ChatPage.tsx
+      components:
+        - frontend/src/components/chat/message-bubble/Message.tsx
+        - frontend/src/components/chat/message-bubble/ThinkingBlock.tsx
+        - frontend/src/components/chat/tools/registry.tsx
+      hooks: []
+      stores: []
+    owning_backend:
+      endpoints:
+        - backend/app/api/endpoints/chat.py
+      services:
+        - backend/app/services/streaming/runtime.py
+      adapters:
+        - backend/app/services/acp/adapters.py
+      models:
+        - backend/app/models/db_models/chat.py
+    mutation_surfaces:
+      filesystem: false
+      git: false
+      terminal: false
+      external_network: false
+      permissions: false
+    risks:
+      - "Private chain-of-thought must not be exposed."
+      - "Do not change Agentrove's active stream UI until it has been evaluated with real or fixture activity."
+    tests_needed:
+      - "Stream fixture summary tests"
+      - "Completed-turn collapsed/expanded rendering tests"
+      - "No private chain-of-thought exposure review"
