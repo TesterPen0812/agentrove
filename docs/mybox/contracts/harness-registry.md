@@ -54,6 +54,26 @@ OpenClaw, Claude Code, or OpenCode.
 Provider-specific icons and tool renderers may remain provider-specific, but the
 choice of which harnesses appear in MyBox must come from registry data.
 
+## Current Implementation Surface
+
+The V1 registry seed lives at:
+
+- `frontend/src/config/mybox-harness-registry.json`
+- `frontend/src/config/myboxHarnessRegistry.ts`
+
+The JSON file is the portable data surface. The TypeScript module owns the app
+types and selectors that presentation components should consume.
+
+The current enforcement check is:
+
+```bash
+node scripts/mybox/checks/check-harness-registry.mjs
+```
+
+That check validates required fields, first-class and secondary harness
+membership, truth-label vocabulary, OpenClaw read-only constraints, and the
+initial presentation cleanup in `ModelSelector`.
+
 ## OpenClaw Rule
 
 OpenClaw begins as one of:
@@ -70,7 +90,8 @@ explicitly changes this contract.
 
 Future implementation must include:
 
-- registry schema validation,
+- registry validation,
 - rendering tests with multiple fixture harnesses,
-- a no-hardcoded-harness-list check,
+- a broader no-hardcoded-harness-list check as more UI surfaces adopt the
+  registry,
 - OpenClaw negative tests proving mutating methods are absent or disabled.

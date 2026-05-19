@@ -173,9 +173,7 @@ export default function App() {
       onError: (error) => {
         console.error('Desktop local auth bootstrap failed:', error);
         const message =
-          error instanceof Error && error.message
-            ? error.message
-            : 'Desktop local session failed.';
+          error instanceof Error && error.message ? error.message : 'Desktop local session failed.';
         setDesktopError(`${message} Restart Agentrove and try again.`);
       },
     });

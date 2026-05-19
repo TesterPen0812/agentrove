@@ -80,7 +80,10 @@ wait before product-code work starts.
 1. **MyBox user-facing text pass:** rename normal product copy to MyBox while
    preserving Agentrove in credits, diagnostics, docs, and upstream notes.
 2. **Harness registry foundation:** introduce the data-driven harness source and
-   tests before building the switcher.
+   tests before building the switcher. The seed implementation lives in
+   `frontend/src/config/mybox-harness-registry.json`,
+   `frontend/src/config/myboxHarnessRegistry.ts`, and
+   `scripts/mybox/checks/check-harness-registry.mjs`.
 3. **Harness switcher and settings shell:** add native-feeling controls using
    existing Agentrove component anatomy.
 4. **Codex native-surface discovery:** determine how to read/control Codex

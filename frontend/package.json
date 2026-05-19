@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "mybox:harness-registry": "node ../scripts/mybox/checks/check-harness-registry.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "vite preview",

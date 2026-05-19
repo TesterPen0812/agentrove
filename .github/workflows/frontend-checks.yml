@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - 'frontend/**'
+      - 'scripts/mybox/checks/check-harness-registry.mjs'
       - '.github/workflows/frontend-checks.yml'
   pull_request:
     branches: [main]
     paths:
       - 'frontend/**'
+      - 'scripts/mybox/checks/check-harness-registry.mjs'
       - '.github/workflows/frontend-checks.yml'
 
 jobs:
@@ -36,6 +38,11 @@ jobs:
         run: |
           cd frontend
           npm run lint
+
+      - name: Run MyBox harness registry check
+        run: |
+          cd frontend
+          npm run mybox:harness-registry
 
       - name: Run Prettier check
         run: |
