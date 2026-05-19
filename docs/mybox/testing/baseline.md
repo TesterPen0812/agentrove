@@ -34,6 +34,7 @@ These should run in the first product-code phase where dependencies are present:
 cd frontend && npm run typecheck
 cd frontend && npm run build
 cd frontend && npm run lint
+cd frontend && npm run mybox:harness-registry
 cd backend && pytest
 ```
 
@@ -95,3 +96,20 @@ G2 data labels:
 
 - Desktop local session state is `LOCAL`.
 - No OpenClaw, harness registry, or mock harness data was introduced.
+
+## G3 Harness Registry Verification
+
+G3 introduced the first MyBox harness registry product-code surface. Branches
+touching harness registry data, selectors, or registry-consuming frontend
+components should run:
+
+```bash
+node scripts/mybox/checks/check-harness-registry.mjs
+cd frontend && npm run mybox:harness-registry
+cd frontend && npm run typecheck
+cd frontend && npm run lint
+cd frontend && npm run build
+```
+
+The registry check is also wired into frontend CI through
+`.github/workflows/frontend-checks.yml`.

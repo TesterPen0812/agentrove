@@ -12,19 +12,12 @@ import { CodexIcon } from '@/components/ui/icons/CodexIcon';
 import { CopilotIcon } from '@/components/ui/icons/CopilotIcon';
 import { CursorIcon } from '@/components/ui/icons/CursorIcon';
 import { OpencodeIcon } from '@/components/ui/icons/OpencodeIcon';
+import { getHarnessDisplayNameForAgentKind } from '@/config/myboxHarnessRegistry';
 import { cn } from '@/utils/cn';
 import { formatNumberCompact } from '@/utils/format';
 import type { AgentKind, Model } from '@/types/chat.types';
 
 const FAVORITES_LABEL = 'Favorites';
-
-const AGENT_LABELS: Record<AgentKind, string> = {
-  claude: 'Claude',
-  codex: 'Codex',
-  copilot: 'Copilot',
-  cursor: 'Cursor',
-  opencode: 'OpenCode',
-};
 
 const AGENT_ICONS: Record<AgentKind, ComponentType<SVGProps<SVGSVGElement>>> = {
   claude: ClaudeIcon,
@@ -90,7 +83,7 @@ export const ModelSelector = memo(function ModelSelector({
     });
 
     groups.forEach((agentModels, kind) => {
-      items.push({ type: 'header', label: AGENT_LABELS[kind] ?? kind });
+      items.push({ type: 'header', label: getHarnessDisplayNameForAgentKind(kind) });
       agentModels.forEach((model) => {
         items.push({ type: 'item', data: model });
       });

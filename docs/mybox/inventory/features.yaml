@@ -455,6 +455,8 @@ features:
       routes:
         - frontend/src/pages/SettingsPage.tsx
       components:
+        - frontend/src/config/mybox-harness-registry.json
+        - frontend/src/config/myboxHarnessRegistry.ts
         - frontend/src/components/chat/model-selector/ModelSelector.tsx
         - frontend/src/components/chat/message-input/InputControls.tsx
       hooks: []
