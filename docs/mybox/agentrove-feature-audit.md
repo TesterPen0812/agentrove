@@ -8,6 +8,10 @@
 
 ## Purpose
 
+This audit is preserved as the G0.5 baseline. The current product authority is
+`docs/mybox/product-blueprint.md`; the blueprint-applied V1 disposition is
+`docs/mybox/v1-feature-disposition.md`.
+
 This audit decides what MyBox should keep, change, remove, or defer from
 Agentrove before product implementation starts.
 
@@ -76,7 +80,7 @@ registry-backed layers.
 | Attachments | `backend/app/services/attachment.py`, `frontend/src/components/chat/message-input/AttachButton.tsx` | Keep | Attachments are part of serious coding workflows and context handoff. | Attachment backend tests and UI smoke. |
 | Queue/send-now | `backend/app/services/queue.py`, `QueueMessageCard.tsx` | Keep | Important for long-running agents and session control. | Queue behavior tests. |
 | Chat search | `frontend/src/components/chat/chat-search/*`, search service | Keep | Search becomes more important as MyBox controls multiple harnesses. | Search tests and UX review. |
-| Browser panel | Not a current core surface | Defer | Valuable later, but should not distract from fork foundation and existing terminal/diff/chat strength. | Later browser-panel spike. |
+| Browser panel | Not a current core surface | Change later in V1 | The product blueprint makes Browser an optional right-panel preview mode. It should be added natively after the registry/settings foundation, not as a permanent dashboard panel. | Later browser-panel spike plus visual review. |
 | iOS companion | Not present | Defer | Product direction is valid, but the fork first needs a stable desktop MyBox. | Separate mobile plan. |
 | Voice/wake word | Not present | Defer | Requires OS/audio/privacy architecture outside this fork slice. | Separate voice architecture plan. |
 
@@ -93,7 +97,8 @@ The next implementation goals should be planned in this order:
 4. **OpenClaw read-only adapter design:** define what can be observed safely,
    how it is labeled, and what is explicitly unavailable.
 5. **Feature-by-feature UI review:** inspect each Agentrove page and decide
-   whether it is MyBox V1, V1 optional, or later.
+   whether it is MyBox V1, V1 optional, later, or remove. Current V1 decisions
+   live in `docs/mybox/v1-feature-disposition.md`.
 
 ## Visual Guardrails
 
