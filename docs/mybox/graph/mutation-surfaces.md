@@ -232,6 +232,8 @@
 | frontend/src/components/ui/shared/HighlightMatch.tsx | git |
 | frontend/src/components/ui/shared/SaveButton.tsx | permissions |
 | frontend/src/config/constants.ts | git, terminal |
+| frontend/src/config/mybox-harness-registry.json | git, terminal, filesystem, permissions, external_network |
+| frontend/src/config/myboxHarnessRegistry.ts | git, terminal, filesystem, permissions, external_network |
 | frontend/src/contexts/ChatContext.tsx | terminal, filesystem |
 | frontend/src/contexts/ChatContextDefinition.ts | terminal, filesystem |
 | frontend/src/contexts/ChatSessionContextDefinition.ts | filesystem, permissions |

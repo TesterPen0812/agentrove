@@ -11,11 +11,13 @@ MyBox fork of Agentrove.
    harness scope, and future-plan compliance.
 4. Read `docs/mybox/fork-policy.md`.
 5. Read `docs/mybox/ui-visual-contract.md` for UI work.
-6. Read `docs/mybox/adapter-architecture.md` for harness, provider, ACP, or
+6. Read `docs/mybox/g3-1-feature-disposition-guardrails.md` before any UI,
+   harness switcher, navigation, panel, or visual adaptation work.
+7. Read `docs/mybox/adapter-architecture.md` for harness, provider, ACP, or
    OpenClaw work.
-7. Read `docs/generated/repo-map.md`, then the generated map for the layer you
+8. Read `docs/generated/repo-map.md`, then the generated map for the layer you
    are touching.
-8. Read the Agentrove domain docs named by `AGENTS.md`.
+9. Read the Agentrove domain docs named by `AGENTS.md`.
 
 Do not bulk-load the repo first. Use the maps to choose the smallest relevant
 files.
@@ -67,9 +69,11 @@ For non-trivial work:
 For UI work:
 
 1. Capture or inspect the current rendered state.
-2. Preserve the native Agentrove/MyBox visual language.
-3. Validate at desktop and one narrow/mobile width when practical.
-4. Treat screenshot mismatch as a real bug.
+2. Identify the exact row in
+   `docs/mybox/g3-1-feature-disposition-guardrails.md` that the change touches.
+3. Preserve the native Agentrove/MyBox visual language.
+4. Validate at desktop and one narrow/mobile width when practical.
+5. Treat screenshot mismatch as a real bug.
 
 For future plans that touch product behavior, UI, harnesses, permissions,
 branding, or adapter boundaries, include a short blueprint compliance checklist:
