@@ -48,10 +48,12 @@ MyBox-specific UI should improve:
 A UI change is not complete until:
 
 1. It is visually inspected in the browser or desktop shell.
-2. It is checked against the baseline Agentrove style.
-3. It avoids invented live status.
-4. It remains usable at one narrow viewport when practical.
-5. Screenshots or clear browser evidence are recorded for non-trivial changes.
+2. It names the touched row from
+   `docs/mybox/g3-1-feature-disposition-guardrails.md`.
+3. It is checked against the baseline Agentrove style.
+4. It avoids invented live status.
+5. It remains usable at one narrow viewport when practical.
+6. Screenshots or clear browser evidence are recorded for non-trivial changes.
 
 If a generated or agent-built design looks generic, reject it and return to the
 baseline style.

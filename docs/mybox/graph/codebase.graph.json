@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T15:40:29.533Z",
+  "generatedAt": "2026-05-20T03:44:24.289Z",
   "note": "Deterministic G1 graph v0. Uses filesystem scans and lightweight regex extraction; advisory graph tools may supplement but do not replace this graph.",
   "nodes": [
     {
@@ -3592,6 +3592,35 @@
         "MONACO_FONT_FAMILY",
         "MOBILE_BREAKPOINT",
         "EMPTY_BUILTIN_COMMANDS"
+      ],
+      "requiredHighRisk": false
+    },
+    {
+      "id": "frontend/src/config/mybox-harness-registry.json",
+      "type": "source.file",
+      "label": "frontend/src/config/mybox-harness-registry.json",
+      "exports": [],
+      "requiredHighRisk": false
+    },
+    {
+      "id": "frontend/src/config/myboxHarnessRegistry.ts",
+      "type": "source.file",
+      "label": "frontend/src/config/myboxHarnessRegistry.ts",
+      "exports": [
+        "MyBoxHarnessTier",
+        "MyBoxHarnessTruthLabel",
+        "MyBoxHarnessAdapterKind",
+        "MyBoxHarnessCapability",
+        "MyBoxHarnessAuthRequirement",
+        "MyBoxHarnessSessionScope",
+        "MyBoxHarnessEventSource",
+        "MyBoxHarnessPermissionModel",
+        "MyBoxHarnessDefinition",
+        "MYBOX_HARNESS_REGISTRY",
+        "getHarnessForAgentKind",
+        "getHarnessDisplayNameForAgentKind",
+        "getFirstClassHarnesses",
+        "getSecondaryHarnesses"
       ],
       "requiredHighRisk": false
     },
@@ -9030,6 +9059,56 @@
     },
     {
       "from": "frontend/src/config/constants.ts",
+      "to": "mutation:terminal",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/mybox-harness-registry.json",
+      "to": "mutation:external_network",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/mybox-harness-registry.json",
+      "to": "mutation:filesystem",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/mybox-harness-registry.json",
+      "to": "mutation:git",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/mybox-harness-registry.json",
+      "to": "mutation:permissions",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/mybox-harness-registry.json",
+      "to": "mutation:terminal",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/myboxHarnessRegistry.ts",
+      "to": "mutation:external_network",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/myboxHarnessRegistry.ts",
+      "to": "mutation:filesystem",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/myboxHarnessRegistry.ts",
+      "to": "mutation:git",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/myboxHarnessRegistry.ts",
+      "to": "mutation:permissions",
+      "type": "mutates"
+    },
+    {
+      "from": "frontend/src/config/myboxHarnessRegistry.ts",
       "to": "mutation:terminal",
       "type": "mutates"
     },

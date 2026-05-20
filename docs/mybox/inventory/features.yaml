@@ -511,10 +511,12 @@ features:
     risks:
       - "A visually foreign switcher would violate the Agentrove/MyBox visual contract."
       - "Filtering chats by harness must not hide unavailable or read-only truth labels."
+      - "First switcher slice must not restructure sidebar, timeline, right panel, terminal, or diff surfaces."
     tests_needed:
       - "Switcher component rendering tests with registry fixtures"
       - "Sidebar filter smoke"
       - "Visual baseline comparison"
+      - "G3.1 guardrail checklist in PR description"
   - id: F-OPENCLAW-VIRTUAL-WORKSPACE-001
     feature_name: OpenClaw virtual workspace bucket
     screen_or_surface: Sidebar workspace grouping
@@ -580,6 +582,7 @@ features:
     risks:
       - "Raw event details should stay inspectable without flooding the main chat timeline."
       - "Browser preview must be optional and not a permanent dashboard panel."
+      - "Right panel mode changes should wait until the harness switcher seam is proven."
     tests_needed:
       - "Right panel mode rendering tests"
       - "Selected item updates inspector fixture"

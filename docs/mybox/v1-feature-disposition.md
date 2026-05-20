@@ -1,7 +1,7 @@
 # MyBox V1 Feature Disposition
 
-**Status:** current  
-**Date:** 2026-05-19  
+**Status:** current
+**Date:** 2026-05-20
 **Source of truth:** `docs/mybox/product-blueprint.md`
 
 This document applies the MyBox V1 Product Blueprint to the existing Agentrove
@@ -84,13 +84,20 @@ wait before product-code work starts.
    `frontend/src/config/mybox-harness-registry.json`,
    `frontend/src/config/myboxHarnessRegistry.ts`, and
    `scripts/mybox/checks/check-harness-registry.mjs`.
-3. **Harness switcher and settings shell:** add native-feeling controls using
-   existing Agentrove component anatomy.
-4. **Codex native-surface discovery:** determine how to read/control Codex
+3. **G3.1 feature disposition guardrails:** read and follow
+   `docs/mybox/g3-1-feature-disposition-guardrails.md` before touching UI
+   code. This pass freezes the first switcher seam and protects Agentrove's
+   current visual language.
+4. **Harness switcher and settings shell:** add native-feeling controls using
+   existing Agentrove component anatomy. The first approved seam is the existing
+   model/provider selector and adjacent header controls; do not restructure the
+   sidebar, timeline, right panel, terminal, or diff surfaces in the first
+   switcher slice.
+5. **Codex native-surface discovery:** determine how to read/control Codex
    chats and live work without assuming ACP parity is enough.
-5. **OpenClaw read-only design:** define exactly which OpenClaw facts can be
+6. **OpenClaw read-only design:** define exactly which OpenClaw facts can be
    observed safely and how they appear under the virtual OpenClaw workspace.
-6. **Timeline/summary evaluation:** inspect Agentrove's native active work
+7. **Timeline/summary evaluation:** inspect Agentrove's native active work
    stream with real or fixture activity before changing the completed-turn
    summary behavior.
 

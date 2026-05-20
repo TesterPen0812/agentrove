@@ -5,6 +5,8 @@
 
 This inventory is intentionally shallow. It gives future MyBox agents enough
 screen ownership to avoid blind edits before the full product inventory exists.
+UI work after G3 must also follow
+`docs/mybox/g3-1-feature-disposition-guardrails.md`.
 
 | Screen | Current route or entrypoint | Main owner files | MyBox decision | V1 priority | Notes |
 | --- | --- | --- | --- | --- | --- |
@@ -17,7 +19,7 @@ screen ownership to avoid blind edits before the full product inventory exists.
 | File tree/editor/preview | Workspace editor surfaces | `frontend/src/components/editor/file-tree/Tree.tsx`; `frontend/src/components/editor/code-view/CodeView.tsx`; `frontend/src/components/editor/editor-view/View.tsx`; `frontend/src/components/editor/file-preview/FilePreview.tsx`; `backend/app/api/endpoints/sandbox.py` | keep | v1_required | Needed for coding-agent supervision and diff review context. |
 | Settings | Settings route and tabs | `frontend/src/pages/SettingsPage.tsx`; `frontend/src/components/settings/tabs/GeneralSettingsTab.tsx`; `frontend/src/components/settings/tabs/InstructionsSettingsTab.tsx`; `backend/app/api/endpoints/settings.py` | keep | v1_required | Later MyBox settings should reuse existing patterns and add harness-specific configuration. |
 | Harnesses settings | Settings route, future harness tab/section | `frontend/src/pages/SettingsPage.tsx`; future MyBox harness registry/config surface | add | v1_required | One native-feeling settings area should list harness status, capabilities, setup/auth state, limitations, and supported actions. |
-| Harness switcher/filter | Landing/chat header or sidebar filter | `frontend/src/components/chat/model-selector/ModelSelector.tsx`; `frontend/src/components/chat/message-input/InputControls.tsx`; future MyBox registry surface | add | v1_required | Global harness filter controls visible chats and composer default harness. Must be registry-driven, not presentation-hardcoded. |
+| Harness switcher/filter | Landing/chat header or sidebar filter | `frontend/src/components/chat/model-selector/ModelSelector.tsx`; `frontend/src/components/chat/message-input/InputControls.tsx`; future MyBox registry surface | add | v1_required | Global harness filter controls visible chats and composer default harness. Must be registry-driven, not presentation-hardcoded. First UI seam is the existing model/provider selector and adjacent header controls; do not restructure sidebar/timeline/right panel in the first slice. |
 | OpenClaw virtual workspace | Sidebar workspace/chat grouping | `frontend/src/components/layout/Sidebar.tsx`; future OpenClaw read-only adapter surface | add | v1_required | OpenClaw projectless chats should appear under a truthful virtual bucket instead of fake local workspace metadata. |
 | Right inspector modes | Chat workspace right panel/review surfaces | `frontend/src/pages/ChatPage.tsx`; `frontend/src/components/sandbox/git/PRReviewView.tsx`; future inspector/browser surfaces | change | v1_required | Right panel modes are Review, Inspector, and optional Browser preview. Keep details out of the main chat by default. |
 | Skills | Settings skills tab and backend service | `frontend/src/components/settings/tabs/SkillsSettingsTab.tsx`; `backend/app/api/endpoints/skills.py`; `backend/app/services/skill.py` | keep | v1_optional | Useful for harness capability and workspace behavior, but must remain capability-gated. |
